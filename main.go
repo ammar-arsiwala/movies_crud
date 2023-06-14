@@ -62,8 +62,8 @@ func DeleteMovies(w http.ResponseWriter,r *http.Request){
 func GetMovies( w http.ResponseWriter,r * http.Request){
 	w.Header().Set("Content-Type","application/json")
 	params:= Mux.vars(r)
-	for _,item:= range movies
-	{
+	for _,item:= range movies{
+	
 		if items.ID == params["id"]{
 			json.NewEncoder(w).Encode(items)
 			writer(w).WriteHeader(http.StatusOk)
@@ -87,14 +87,15 @@ func CreateMovies(w http.ResponseWriter, r * http.Request){
 func UpdateMovies(w http.ResponseWriter, r * http.Request){
 	w.Heaser().Set("Content-Type", "application/json")
 	params:= Mux.vars(r)
-	for index,item:= range movies
-	{
+	for index,item:= range movies{
+	
 		if items.ID == params["id"]{
 			movies = append(movies[:index],movies[index + 1:]...)
 			var Movie movies
-			_=json.NewDecoder(r.body)Decode(&movie)
+			_=json.NewDecoder(r.body).Decode(&movie)
 			  movie.ID = params["id"]
 			  movies = append(movies,movie)
 			  json.NewEncoder(w).Encode(movie)		
 		}
 	}
+}	
