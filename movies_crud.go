@@ -1,7 +1,5 @@
 package main
 
-$ go get -u github.com/gorilla/mux 
-
 import(
 "fmt"
 "log"
@@ -92,8 +90,11 @@ func UpdateMovies(w http.ResponseWriter, r * http.Request){
 	for index,item:= range movies
 	{
 		if items.ID == params["id"]{
-			
+			movies = append[movies[:index],movies[:index + 1]...]
+			var Movie movies
+			_=json.NewDecoder(r.body)Decode(&movie)
+			  movie.ID = params["id"]
+			  movies = append(movies,movie)
+			  json.NewEncoder(w).Encode(movie)		
 		}
 	}
-
-}
