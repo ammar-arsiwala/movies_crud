@@ -11,17 +11,17 @@ import(
 )
 
 type Movie struct{
-	ID string = `json:"id"` 
-	Isbn string =`json:"isbn"`
-	Title string =`json:"title"`
-	Director string = `json:"director"`
+	ID string  `json:"id"` 
+	Isbn string `json:"isbn"`
+	Title string `json:"title"`
+	Director string  `json:"director"`
 }
 
 
 type Director struct{
-	FirstName string = `json:"firstname"`
-	LastName string = `json:"lastname"` 
-	Country string = `json:"country"`
+	FirstName string  `json:"firstname"`
+	LastName string  `json:"lastname"` 
+	Country string `json:"country"`
 }
 
 var movies []Movie
