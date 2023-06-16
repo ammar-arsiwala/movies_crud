@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
-
+	"time"
 	"github.com/gorilla/mux"
 )
 
@@ -48,6 +48,14 @@ func main() {
 			Country:   "China",
 		},
 	})
+	srv:=&http.Server{
+		Handler: r,
+		Addr:":8000",
+		WriteTimeout: time.Second * 15,
+		ReadTimeout: time.Second * 15,
+		IdleTimeout: time.Second * 60,
+	}
+		
 	r.HandleFunc("/movies", GetMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", GetMovie).Methods("GET")
 	r.HandleFunc("/movies", CreateMovie).Methods("POST")
@@ -55,7 +63,7 @@ func main() {
 	r.HandleFunc("/movies/{id}", DeleteMovie).Methods("DELETE")
 
 	fmt.Printf("starting server at 8000\n")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(srv.ListenAndServe())
 }
 
 func GetMovies(w http.ResponseWriter, r *http.Request) {
