@@ -5,8 +5,7 @@
 - Clone the repo
 - go get -u "github.com/gorilla/mux"
 - go build 
-- go main.go
-- using postman implement each http function
+- Postman api
 
 ## 🗿 Disclaimer
 I am not responsible for anything that happens when you use this software. Promise no Malware
